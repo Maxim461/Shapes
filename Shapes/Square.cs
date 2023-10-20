@@ -10,11 +10,12 @@ namespace Shapes
 			this.Length = Length;
 		}
 
-		private void Perimeter()
+		private void Perimeter(int length)
 		{
 			Console.Clear();
 			int PerimeterVar = Length * 4;
 			Console.WriteLine($"Периметр квадрата = {PerimeterVar}");
+		
 		}
 
         private void Space()
@@ -22,6 +23,11 @@ namespace Shapes
             int SpaceVar = Length * Length;
             Console.WriteLine($"Площадь квадрата = {SpaceVar}");
         }
+
+		public void vivod(int PerimeterVar)
+        {
+			
+		}
+
     }
 }
-

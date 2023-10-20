@@ -86,11 +86,16 @@ while (true)
             double Apoferma = double.Parse(Console.ReadLine());
             Console.WriteLine("Введите площадь основания:");
             double SpaceFooting = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите высоту пирамидки:");
+            Console.WriteLine("Введите высоту:");
             double Height = double.Parse(Console.ReadLine());
-            Pyramid pyramid = new Pyramid(PerimeterOfTheBase, Apoferma, SpaceFooting, Height);
+            Console.WriteLine("Введите количество сторон:");
+            double NumberOfSides = double.Parse(Console.ReadLine());
+            Console.WriteLine("Введите длину сторон:");
+            double LengthOfSides = double.Parse(Console.ReadLine());
+            Pyramid pyramid = new Pyramid(PerimeterOfTheBase, Apoferma, SpaceFooting, Height, NumberOfSides, LengthOfSides);
             pyramid.Space();
             pyramid.Volume();
+            pyramid.Perimeter();
             Console.ReadLine();
             break;
     }
