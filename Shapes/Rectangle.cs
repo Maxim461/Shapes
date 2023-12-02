@@ -3,26 +3,31 @@ namespace Shapes
 {
 	public class Rectangle
 	{
-		private int Width;
-        private int Length;
+		protected double width;
+        protected double length;
 
-        public Rectangle(int Width, int Length)
+        public Rectangle(double width, double length)
 		{
-			this.Width = Width;
-			this.Length = Length;
+			this.width = width;
+			this.length = length;
 		}
 
-        public void Perimeter()
+        protected double Perimeter()
         {
-            Console.Clear();
-            int PerimeterVar = (Length + Width) * 2;
-            Console.WriteLine($"Периметр круга = {PerimeterVar}");
+            return ((length + width) * 2);
         }
 
-        public void Space()
+        protected double Space()
         {
-            int SpaceVar = Length * Width;
-            Console.WriteLine($"Площадь круга = {SpaceVar}");
+            return (length * width);
+        }
+
+        public void Out()
+        {
+            Console.WriteLine($"Периметр прямоугольника: {Perimeter()};");
+            Console.WriteLine($"Площадь прямоугольника: {Space()}.");
+            Console.WriteLine("Нажмите Enter:");
+            Console.ReadKey();
         }
     }
 }

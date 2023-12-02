@@ -3,31 +3,29 @@ namespace Shapes
 {
 	public class Square
 	{
-		private int Length;
+		protected double length;
 
-        public Square(int Length)
+        public Square(double length)
 		{
-			this.Length = Length;
+			this.length = length;
 		}
 
-		private void Perimeter(int length)
+        protected double Perimeter()
 		{
-			Console.Clear();
-			int PerimeterVar = Length * 4;
-			Console.WriteLine($"Периметр квадрата = {PerimeterVar}");
-		
+			return (length * 4);
 		}
 
-        private void Space()
+        protected double Space()
 		{
-            int SpaceVar = Length * Length;
-            Console.WriteLine($"Площадь квадрата = {SpaceVar}");
+            return (length * length);
         }
 
-		public void vivod(int PerimeterVar)
-        {
-			
-		}
-
+		public void Out()
+		{
+            Console.WriteLine($"Периметр квадрата: {Perimeter()};");
+            Console.WriteLine($"Площадь квадрата: {Space()}.");
+			Console.WriteLine("Нажмите Enter:");
+			Console.ReadKey();
+        }
     }
 }

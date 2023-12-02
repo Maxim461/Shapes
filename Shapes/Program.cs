@@ -6,97 +6,87 @@ using Shapes;
 while (true)
 {
     Console.Clear();
-    Console.WriteLine("Введите, что вы хотите подсчитать:");
-    Console.WriteLine("1 - Квадрат;");
-    Console.WriteLine("2 - Прямоугольник;");
-    Console.WriteLine("3 - Круг;");
-    Console.WriteLine("4 - Треугольник;");
-    Console.WriteLine("5 - Пирамидка.");
-
-    ConsoleKey keyInfo = Console.ReadKey().Key;
-    switch (keyInfo)
+    Console.WriteLine("Введите, что вы хотите подсчитать:\n1 - квадрат;\n2 - прямоугольник;\n3 - круг;\n4 - треугольник;\n5 - пирамида(квадрат);\n6 - пирамида(прямоугольник);\n7 - пирамида(круг);\n8 - пирамида(треугольник).");
+    int button = int.Parse(Console.ReadLine());
+    switch (button)
     {
-        case ConsoleKey.D1:
-            Console.Clear();
-            Console.WriteLine("Введите значение в целочисленном виде: ");
-            Console.WriteLine("Длина: ");
-            int Length = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Длина: {Length}");
-            Square square = new Square(Length);
-            Console.Clear();
-            typeof(Square).GetMethod("Perimeter", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(new Square(Length), null);
-            typeof(Square).GetMethod("Space", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(new Square(Length), null);
-            Console.WriteLine("Нажмите Enter чтобы вернуться.");
-            Console.ReadLine();
+        case 1:
+            Console.Write("Введите длину квадрата: ");
+            double length = double.Parse(Console.ReadLine());
+            Square square = new Square(length);
+            square.Out();
             break;
 
-        case ConsoleKey.D2:
-            Console.Clear();
-            Console.WriteLine("Введите значения в целочисленном виде: ");
-            Console.WriteLine("Ширина: ");
-            int Width = int.Parse(Console.ReadLine());
-            Console.WriteLine("Длина: ");
-            Length = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Ширина: {Width}, длина: {Length}");
-            Rectangle rectangle = new Rectangle(Width, Length);
-            Console.Clear();
-            rectangle.Perimeter();
-            rectangle.Space();
-            Console.WriteLine("Нажмите Enter чтобы вернуться.");
-            Console.ReadLine();
+        case 2:
+            Console.Write("Введите ширину прямоугольника: ");
+            double width = int.Parse(Console.ReadLine());
+            Console.Write("Введите длину прямоугольника: ");
+            length = int.Parse(Console.ReadLine());
+            Rectangle rectangle = new Rectangle(width, length);
+            rectangle.Out();
             break;
 
-        case ConsoleKey.D3:
-            Console.Clear();
-            Console.WriteLine("Введите значение: ");
-            Console.WriteLine("Радиуса: ");
-            double Radius = Double.Parse(Console.ReadLine());
-            Console.WriteLine($"Радиуса: {Radius}");
-            Circle circle = new Circle(Radius);
-            Console.Clear();
-            circle.Perimeter();
-            circle.Space();
-            Console.WriteLine("Нажмите Enter чтобы вернуться.");
-            Console.ReadLine();
+        case 3:
+            Console.Write("Введите радиус: ");
+            double radius = Double.Parse(Console.ReadLine());
+            Circle circle = new Circle(radius);
+            circle.Out();
             break;
 
-        case ConsoleKey.D4:
-            Console.Clear();
-            Console.WriteLine("Введите значение: ");
-            Console.WriteLine("A: ");
-            double A = double.Parse(Console.ReadLine());
-            Console.WriteLine("B: ");
-            double B = double.Parse(Console.ReadLine());
-            Console.WriteLine("C: ");
-            double C = double.Parse(Console.ReadLine());
-            Console.WriteLine($"A: {A}, B: {B}, C: {C}");
-            Triangle triangle = new Triangle(A, B, C);
-            Console.Clear();
-            triangle.Perimeter();
-            triangle.Space();
-            Console.WriteLine("Нажмите Enter чтобы вернуться.");
-            Console.ReadLine();
+        case 4:
+            Console.Write("Введите значение A: ");
+            double a = double.Parse(Console.ReadLine());
+            Console.Write("Введите значение B: ");
+            double b = double.Parse(Console.ReadLine());
+            Console.Write("Введите значение C: ");
+            double c = double.Parse(Console.ReadLine());
+            Triangle triangle = new Triangle(a, b, c);
+            triangle.Out();
+            break;
+        //Пирамидки
+        case 5:
+            Console.Write("Введите длину квадрата: ");
+            double doubleLength = double.Parse(Console.ReadLine());
+            Console.Write("Введите высоту пирамиды: ");
+            double heightPyramid = double.Parse(Console.ReadLine());
+            SquarePyramid squarePyramid = new SquarePyramid(doubleLength, heightPyramid);
+            squarePyramid.Out();
             break;
 
-        case ConsoleKey.D5:
-            Console.Clear();
-            Console.WriteLine("Введите периметр основания:");
-            double PerimeterOfTheBase = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите апоферму:");
-            double Apoferma = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите площадь основания:");
-            double SpaceFooting = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите высоту:");
-            double Height = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите количество сторон:");
-            double NumberOfSides = double.Parse(Console.ReadLine());
-            Console.WriteLine("Введите длину сторон:");
-            double LengthOfSides = double.Parse(Console.ReadLine());
-            Pyramid pyramid = new Pyramid(PerimeterOfTheBase, Apoferma, SpaceFooting, Height, NumberOfSides, LengthOfSides);
-            pyramid.Space();
-            pyramid.Volume();
-            pyramid.Perimeter();
-            Console.ReadLine();
+        case 6:
+            Console.Write("Введите длину прямоугольника: ");
+            length = double.Parse(Console.ReadLine());
+
+            Console.Write("Введите ширину прямоугольника: ");
+            width = double.Parse(Console.ReadLine());
+
+            Console.Write("Введите высоту пирамиды: ");
+            heightPyramid = double.Parse(Console.ReadLine());
+
+            RestanglePyramid restanglePyramid = new RestanglePyramid(length, width, heightPyramid);
+            restanglePyramid.Out();
+            break;
+
+        case 7:
+            Console.Write("Введите радиус круга: ");
+            radius = double.Parse(Console.ReadLine());
+
+            Console.Write("Введите высоту пирамиды: ");
+            heightPyramid = double.Parse(Console.ReadLine());
+
+            CirclePyramid circlePyramid = new CirclePyramid(radius, heightPyramid);
+            circlePyramid.Out();
+            break;
+
+        case 8:
+            Console.WriteLine("Введите A сторону треугольника\nВведите B сторону треугольника\nВведите C сторону треугольника");
+            a = double.Parse(Console.ReadLine());
+            b = double.Parse(Console.ReadLine());
+            c = double.Parse(Console.ReadLine());
+            Console.Write("Введите высоту пирамиды: ");
+            double heightPyramid3 = double.Parse(Console.ReadLine());
+            TrianglePyramid trianglePyramid = new TrianglePyramid(a, b, c, heightPyramid3);
+            trianglePyramid.Out();
             break;
     }
 }

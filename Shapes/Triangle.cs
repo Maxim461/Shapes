@@ -3,62 +3,67 @@ namespace Shapes
 {
 	public class Triangle
 	{
-        private double A;
-        private double B;
-        private double C;
-        private double PerimeterVar;
-        
-		public Triangle(double A, double B, double C)
+        protected double a;
+        protected double b;
+        protected double c;
+        protected string result;
+        protected double spaceVar;
+
+		public Triangle(double a, double b, double c)
 		{
-            this.A = A;
-            this.B = B;
-            this.C = C;
+            this.a = a;
+            this.b = b;
+            this.c = c;
 		}
 
-        public void Perimeter()
+        protected double Perimeter()
         {
-            Console.Clear();
-            if (A != 0 && B == 0 && C == 0)
+            if (a != 0 && b == 0 && c == 0)
             {
-                PerimeterVar = A * 3;
-                Console.WriteLine($"Периметр равностороннего треугольника = {PerimeterVar}");
+                return (a * 3);
             }
-            else if (A != 0 && B != 0 && C == 0)
+            else if (a != 0 && b != 0 && c == 0)
             {
-                PerimeterVar = A * 2 * B;
-                Console.WriteLine($"Периметр равнобедренного треугольника = {PerimeterVar}");
+                return a * 2 * b;
             }
-            else if (A != 0 && B != 0 && C != 0)
+            else if (a != 0 && b != 0 && c != 0)
             {
-                PerimeterVar = A + B + C;
-                Console.WriteLine($"Периметр разностоннего треугольника = {PerimeterVar}");
+                return a + b + c;
             }
             else
             {
-                Console.WriteLine("Треугольника не существует.");
+                return 0;
+            }
+            double halfPerimeter = Perimeter() / 2;
+            spaceVar = Math.Sqrt(halfPerimeter * (halfPerimeter - a) * (halfPerimeter - b) * (halfPerimeter - c));
+        }
+
+        protected string Space()
+        {
+            if (a +  b <= c || a + c <= b || b + c <= a)
+            {
+                return "Такого треугольника не существует.";
+            }
+            else if (a == b && a == c)
+            {
+                return "Площадь равностороннего треугольника: "; 
+            }
+            else if (a == b || a == c || b == c)
+            {
+                return "Площадь равнобедренного треугольника:"; 
+            }
+            else
+            {
+                return "Площадь разностороннего треугольника = {SpaceVar}";
             }
         }
 
-        public void Space()
+        public void Out()
         {
-            double HalfPerimeter = PerimeterVar / 2;
-            double SpaceVar = Math.Sqrt(HalfPerimeter * (HalfPerimeter - A) * (HalfPerimeter - B) * (HalfPerimeter - C));
-            if (A +  B <= C || A + C <= B || B + C <= A)
-            {
-                Console.WriteLine("Такого треугольника не существует.");
-            }
-            else if (A == B && A == C)
-            {
-                Console.WriteLine($"Площадь равностороннего треугольника = {SpaceVar}"); 
-            }
-            else if (A == B || A == C || B == C)
-            {
-                Console.WriteLine($"Площадь равнобедренного треугольника = {SpaceVar}"); 
-            }
-            else
-            {
-                Console.WriteLine($"Площадь разностороннего треугольника = {SpaceVar}");
-            }
+            Console.WriteLine($"Периметр равностороннего треугольника: {Perimeter()}");
+            Console.WriteLine($"{Space()}{spaceVar}");
+            Console.WriteLine("Нажмите Enter:");
+            Console.ReadKey();
         }
     }
 }

@@ -3,24 +3,29 @@ namespace Shapes
 {
 	public class Circle
 	{
-        private double Radius;
+        protected double radius;
 
-		public Circle(double Radius)
+		public Circle(double radius)
 		{
-            this.Radius = Radius;
+            this.radius = radius;
 		}
 
-        public void Perimeter()
+        protected double Perimeter()
         {
-            Console.Clear();
-            double PerimeterVar = 2 * 3.14 * Radius;
-            Console.WriteLine($"Периметр квадрата = {PerimeterVar}");
+            return (2 * 3.14 * radius);
         }
 
-        public void Space()
+        protected double Space()
         {
-            double SpaceVar = 3.14  * (Radius * Radius);
-            Console.WriteLine($"Площадь квадрата = {SpaceVar}");
+            return (3.14  * (radius * radius));
+        }
+
+        public void Out()
+        {
+            Console.WriteLine($"Периметр квадрата: {Perimeter()};");
+            Console.WriteLine($"Площадь квадрата: {Space()}.");
+            Console.WriteLine("Нажмите Enter:");
+            Console.ReadKey();
         }
     }
 }
